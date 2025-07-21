@@ -39,3 +39,12 @@ my-ui-library/
 ├── package.json
 └── webpack.config.js    # Hoặc Gulpfile
 ```
+# Tạo thư mục và khởi tạo npm
+```bash
+mkdir my-ui-library && cd my-ui-library
+npm init -y
+
+# Cài đặt dependencies
+npm install sass jquery --save
+npm install webpack webpack-cli css-loader sass-loader mini-css-extract-plugin terser-webpack-plugin clean-webpack-plugin --save-dev
+```
