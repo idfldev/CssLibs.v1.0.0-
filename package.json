@@ -1,0 +1,72 @@
+{
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "scss": "^0.2.4"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^7.1.2",
+    "gh-pages": "^6.3.0",
+    "mini-css-extract-plugin": "^2.9.2",
+    "sass": "^1.89.2",
+    "sass-loader": "^16.0.5",
+    "terser-webpack-plugin": "^5.3.14",
+    "webpack": "^5.100.2",
+    "webpack-cli": "^6.0.1"
+  },
+  "scripts": {
+    "build": "webpack --mode production",
+    "watch": "webpack --watch --mode development",
+    "start": "webpack serve --mode development --open",
+    "lint": "eslint src/**/*.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint:fix": "eslint src/**/*.js --fix",
+    "format": "prettier --write 'src/**/*.{js,scss}'",
+    "format:check": "prettier --check 'src/**/*.{js,scss}'",
+    "clean": "rimraf dist",
+    "build:css": "sass src/styles/main.scss dist/styles/main.css --no-source-map",
+    "build:js": "webpack --mode production",
+    "build:assets": "cp -R src/assets/* dist/assets/",
+    "build:fonts": "cp -R src/fonts/* dist/fonts/",
+    "build:images": "cp -R src/images/* dist/images/",
+    "build:html": "html-webpack-plugin --template src/index.html --output dist/index.html",
+    "build:all": "npm run clean && npm run build:css && npm run build:js && npm run build:assets && npm run build:fonts && npm run build:images && npm run build:html",
+    "build:docs": "jsdoc -c jsdoc.json -d docs",
+    "serve:docs": "http-server docs -p 8080",
+    "build:themes": "sass src/themes/_dark.scss dist/themes/dark.css --no-source-map && sass src/themes/_light.scss dist/themes/light.css --no-source-map",
+    "deploy": "gh-pages -d dist -b gh-pages",
+    "predeploy": "npm run build && npm run build:themes"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/your-repo.git",
+    "directory": "dist",
+    "branch": "gh-pages",
+    "defaultBranch": "main",
+    "commitMessage": "Deploy to GitHub Pages",
+    "push": true
+  },
+  "author": "Your Name <youremail@example.com>",
+  "license": "MIT",
+  "homepage": "https://yourusername.github.io/your-repo/",
+  "bugs": {
+    "url": "https://github.com/yourusername/your-repo/issues"
+  },
+  "keywords": [
+    "css",
+    "scss",
+    "themes",
+    "jquery",
+    "gh-pages",
+    "sass"
+  ],
+  "name": "your-repo-name",
+  "version": "1.0.0",
+  "description": "A collection of CSS libraries and themes built with SCSS.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  }
+}
